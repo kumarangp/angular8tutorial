@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   <h2>{{ name.length }}</h2>
   <h2>{{ name.toUpperCase() }}</h2>
   <h1>{{ greet() }}</h1>
-  <h1>{{ siteUrl }}</h1>
+  <h3>{{ siteUrl }}</h3>
   `,
   styles: ['']
 })
