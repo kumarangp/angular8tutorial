@@ -4,12 +4,13 @@ import { getRenderedText } from '@angular/core/src/render3';
 @Component({
   selector: 'app-test',
   template: `
-    <h1 class="text-success">Kumaran Kumaran</h1>
-    <h1 [class]="successClass">Kumaran Kumaran</h1>
+   <h2 [style.color]="'orange'">style binding 1</h2>
 
-    <h1 [class.text-danger]="hasError">Kumaran</h1>
+   <h2 [style.color]="hasError ? 'red' : 'green'">style binding 2</h2>
 
-    <h1 [ngClass]="messageClasses">Kumaran</h1>
+   <h2 [style.color]="highlightColor">style binding 3</h2>
+
+   <h2 [ngStyle]="titleStyles">style binding 4</h2>
      
   `,
   styles: [`
@@ -29,6 +30,12 @@ import { getRenderedText } from '@angular/core/src/render3';
   ]
 })
 export class TestComponent implements OnInit {
+
+  public highlightColor = "orange";
+  public titleStyles = {
+    color : "blue",
+    fontStyle : "italic"
+  }
 
   public successClass = "text-success";
   public hasError = false;
