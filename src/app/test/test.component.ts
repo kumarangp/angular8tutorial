@@ -1,21 +1,50 @@
 import { Component, OnInit } from '@angular/core';
+import { getRenderedText } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-test',
   template: `
-  <input [id]="myId" type="text" value="kumaran">
-  <input [disabled]="isDisabled" id="{{myId}}" type="text" value="kumaran">
+    <h1 class="text-success">Kumaran Kumaran</h1>
+    <h1 [class]="successClass">Kumaran Kumaran</h1>
+
+    <h1 [class.text-danger]="hasError">Kumaran</h1>
+
+    <h1 [ngClass]="messageClasses">Kumaran</h1>
+     
   `,
-  styles: ['']
+  styles: [`
+    .text-success {
+      color: green;
+    }
+
+    .text-danger {
+      color: red;
+    }
+
+    .text-special {
+      font-style: italic;
+    }
+  
+  `
+  ]
 })
 export class TestComponent implements OnInit {
 
-  public name = "kumaran111";
-  public siteUrl = window.location.href;
+  public successClass = "text-success";
+  public hasError = false;
 
-  public myId = "testId";
+  public isSpecial = true;
+  public messageClasses = {
+    "text-success" : !this.hasError,
+    "text-danger" : this.hasError,
+    "text-special" : this.isSpecial
+  }
 
-  public isDisabled = true;
+
+
+
+  
+  
 
   constructor() { }
 
